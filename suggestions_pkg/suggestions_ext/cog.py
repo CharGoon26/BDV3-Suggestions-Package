@@ -15,10 +15,10 @@ log = logging.getLogger("ballsdex.packages.suggestions")
 
 # Configuration - Set this to your suggestions channel ID
 # Right click channel → Copy ID (requires Developer Mode enabled)
-SUGGESTIONS_CHANNEL_ID = 1432561197034504223
+SUGGESTIONS_CHANNEL_ID = 
 
 # Optional: DM these user IDs when a suggestion is received
-NOTIFY_USERS = [496296918280962049]
+NOTIFY_USERS = []
 
 
 class SuggestionModal(discord.ui.Modal, title="Submit a Suggestion"):
@@ -81,16 +81,7 @@ class Suggestions(commands.Cog):
             timestamp=datetime.now(),
         )
 
-        embed.set_author(
-            name=f"{user.name} (ID: {user.id})",
-            icon_url=user.display_avatar.url if user.display_avatar else None,
-        )
-
-        embed.add_field(
-            name="User Info",
-            value=f"**Username:** {user.mention}\n**Total Suggestions:** {suggestion_number}",
-            inline=False,
-        )
+        embed.set_author(name=f"ID: {user.id}")
 
         if attachment_url:
             embed.add_field(
